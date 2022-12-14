@@ -1,9 +1,15 @@
-import React from "react";
+import React,{ useContext } from "react";
+import { orderContext } from "../../context/order-history.context";
 import { View,Text,Image,StyleSheet,TextInput, TouchableOpacity } from "react-native";
 
 const RedeemComponent = ({item})=>{
-    console.log(item);
+    const {addOrder} = useContext(orderContext)
     const { imgUrl,title,subTitle,buttonText } = item;
+
+    const handelTap = ()=>{
+        addOrder(item);
+    }
+
     return(
         <View style={styles.RedeemContainer}>
             <View>
@@ -16,7 +22,7 @@ const RedeemComponent = ({item})=>{
                 <Text style={styles.text_2}>{subTitle}</Text>
                 <View style={styles.inputContainer}>
                     <TextInput style={styles.textInput} />
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={handelTap}>
                         <Text style={styles.button_text}>{buttonText}</Text>
                     </TouchableOpacity>
                 </View>
@@ -29,7 +35,7 @@ const styles = StyleSheet.create({
     RedeemContainer:{
         height:345,
         borderRadius:12,
-        marginTop:25
+        marginTop:25,
     },
     img: {
         width:'100%',

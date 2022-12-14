@@ -18,7 +18,6 @@ const SettingComponent = ({ text,name,pressEvent=()=>null })=>{
 
 const styles = StyleSheet.create({
     container:{
-        borderWidth:1,
         borderColor:'#cfcdca',
         flexDirection:'row',
         justifyContent:'space-between',
@@ -28,7 +27,9 @@ const styles = StyleSheet.create({
         paddingLeft:15,
         paddingRight:15,
         borderRadius:20,
-        marginTop:20
+        marginTop:20,
+        backgroundColor:"#fff",
+        elevation:5
     },
     text:{
         marginLeft:15,

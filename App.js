@@ -1,18 +1,20 @@
 import React from 'react';
-import { StyleSheet, View ,Image,Text } from 'react-native';
+import {View ,Image,Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Card } from 'react-native-shadow-cards'
+import { OrderHistoryProvider } from './src/context/order-history.context';
 import LoginSignUp from './src/screens/Login-SignUp';
 import ResetPassword from './src/screens/reset-password.screen';
 import Reset from './src/screens/reset.screen';
 import BottomNavigation from './src/screens/bottom-navigation.screen';
 import RecyleScreen from './src/screens/recyle.screen';
 
+
 const stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    <OrderHistoryProvider>
       <NavigationContainer>
         <stack.Navigator screenOptions={{
           cardStyle: { backgroundColor: '#6ED4C8' }
@@ -43,12 +45,7 @@ export default function App() {
           }} />
         </stack.Navigator>
       </NavigationContainer>
+    </OrderHistoryProvider>
 
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex:1,
-  },
-});
